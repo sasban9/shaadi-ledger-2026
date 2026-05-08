@@ -1,0 +1,1009 @@
+/* =========================================================
+VOWLEDGER — CINEMA THEME
+Replace your existing <style> with this
+========================================================= */
+
+:root{
+
+    --bg:#0c1016;
+    --panel:#141c25;
+    --panel2:#1b2531;
+
+    --line:rgba(255,255,255,.06);
+
+    --gold:#d3b179;
+    --gold-soft:#f0d7b1;
+
+    --text:#f6f4f1;
+    --muted:#94a0ad;
+
+    --green:#d9be92;
+
+    --shadow:
+    0 30px 90px rgba(0,0,0,.55);
+
+}
+
+/* =========================================================
+GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:
+    radial-gradient(circle at top,#1b2430 0%,#0c1016 48%);
+
+    color:var(--text);
+
+    font-family:'Inter',sans-serif;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* FILM GRAIN */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.12;
+
+    background-image:
+    radial-gradient(rgba(255,255,255,.15) .8px, transparent .8px);
+
+    background-size:3px 3px;
+
+    mix-blend-mode:soft-light;
+
+    z-index:9999;
+
+}
+
+/* CINEMATIC VIGNETTE */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        circle,
+        transparent 35%,
+        rgba(0,0,0,.45) 100%
+    );
+
+    z-index:2;
+
+}
+
+body::-webkit-scrollbar{
+    width:10px;
+}
+
+body::-webkit-scrollbar-thumb{
+
+    background:#283442;
+
+    border-radius:999px;
+
+}
+
+.container{
+
+    width:min(1720px,95%);
+
+    margin:auto;
+
+    padding:34px 0 120px;
+
+    position:relative;
+
+    z-index:3;
+
+}
+
+/* =========================================================
+TOP
+========================================================= */
+
+.top{
+    margin-bottom:36px;
+}
+
+.top small{
+
+    color:var(--gold);
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    font-size:11px;
+
+}
+
+.top h1{
+
+    margin-top:18px;
+
+    font-size:clamp(4rem,8vw,7rem);
+
+    line-height:.88;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-weight:600;
+
+    letter-spacing:-.04em;
+
+    max-width:900px;
+
+}
+
+.top p{
+
+    margin-top:22px;
+
+    max-width:900px;
+
+    line-height:2;
+
+    color:var(--muted);
+
+    font-size:1rem;
+
+}
+
+/* =========================================================
+LAYOUT
+========================================================= */
+
+.layout{
+
+    display:grid;
+
+    grid-template-columns:1.55fr .92fr;
+
+    gap:26px;
+
+    align-items:start;
+
+}
+
+/* =========================================================
+FEED
+========================================================= */
+
+.feed-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:22px;
+
+}
+
+.feed-card{
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(20,28,37,.92),
+        rgba(13,18,25,.96)
+    );
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    animation:fadeUp .7s ease;
+
+    transition:
+    .7s cubic-bezier(.19,1,.22,1);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:var(--shadow);
+
+    position:relative;
+
+}
+
+/* cinematic edge glow */
+
+.feed-card::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    border-radius:34px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.06),
+        transparent 45%
+    );
+
+    pointer-events:none;
+
+}
+
+.feed-card:hover{
+
+    transform:
+    translateY(-7px);
+
+    border-color:
+    rgba(211,177,121,.18);
+
+}
+
+/* =========================================================
+IMAGE
+========================================================= */
+
+.feed-image{
+
+    height:280px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.feed-image::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.55),
+        transparent 45%
+    );
+
+}
+
+.feed-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:1.8s ease;
+
+    filter:
+    brightness(.82)
+    contrast(1.04)
+    saturate(.88);
+
+}
+
+.feed-card:hover img{
+    transform:scale(1.08);
+}
+
+/* =========================================================
+CONTENT
+========================================================= */
+
+.feed-content{
+    padding:24px;
+}
+
+.feed-top{
+
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+
+}
+
+.user{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+}
+
+.avatar{
+
+    width:56px;
+    height:56px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:
+    2px solid rgba(211,177,121,.15);
+
+}
+
+.avatar img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+    brightness(.88)
+    contrast(1.05);
+
+}
+
+.user h4{
+    font-size:14px;
+}
+
+.user p{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:var(--muted);
+
+}
+
+.energy-text{
+
+    color:var(--gold-soft);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.03em;
+
+}
+
+.feed-text{
+
+    margin-top:22px;
+
+    line-height:1.95;
+
+    color:#dfe7ef;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+TAGS
+========================================================= */
+
+.tags{
+
+    margin-top:22px;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.tag{
+
+    background:#121922;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    padding:11px 16px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    color:#d8e2ea;
+
+    backdrop-filter:blur(10px);
+
+}
+
+/* =========================================================
+ENERGY BAR
+========================================================= */
+
+.energy-wrap{
+
+    margin-top:22px;
+
+    height:10px;
+
+    background:#0d141b;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.energy-bar{
+
+    height:100%;
+
+    width:0%;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #b88e55,
+        #f1d7af
+    );
+
+    box-shadow:
+    0 0 20px rgba(211,177,121,.25);
+
+    animation:growBar 1.5s forwards;
+
+}
+
+/* =========================================================
+AI CARD
+========================================================= */
+
+.ai-card{
+    padding:34px;
+}
+
+.ai-card small{
+
+    color:var(--gold);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    font-size:11px;
+
+}
+
+.ai-card p{
+
+    margin-top:18px;
+
+    line-height:2;
+
+    font-size:18px;
+
+    color:#eef3f6;
+
+    font-family:'Cormorant Garamond',serif;
+
+}
+
+/* =========================================================
+RIGHT
+========================================================= */
+
+.right-column{
+
+    position:sticky;
+    top:20px;
+
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+
+}
+
+.panel{
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(27,37,49,.95),
+        rgba(17,24,32,.98)
+    );
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.panel-content{
+    padding:28px;
+}
+
+.cta{
+
+    width:100%;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #c39b64,
+        #f0d3a8
+    );
+
+    color:#111;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+    .55s cubic-bezier(.19,1,.22,1);
+
+    box-shadow:
+    0 10px 30px rgba(211,177,121,.15);
+
+}
+
+.cta:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.01);
+
+}
+
+.panel h2{
+
+    margin-top:28px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:52px;
+
+    line-height:.92;
+
+}
+
+.panel p{
+
+    margin-top:16px;
+
+    color:var(--muted);
+
+    line-height:1.95;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+LEADERBOARD
+========================================================= */
+
+.leaderboard{
+
+    margin-top:24px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.clan{
+
+    background:#131b24;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:26px;
+
+    padding:18px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    transition:
+    .5s cubic-bezier(.19,1,.22,1);
+
+}
+
+.clan:hover{
+
+    transform:translateX(6px);
+
+    border-color:
+    rgba(211,177,121,.18);
+
+}
+
+.clan-left{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+}
+
+.rank{
+
+    width:44px;
+    height:44px;
+
+    border-radius:50%;
+
+    background:#1c2733;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold-soft);
+
+    font-weight:700;
+
+}
+
+.clan h4{
+    font-size:14px;
+}
+
+.clan small{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:var(--muted);
+
+}
+
+.points{
+
+    color:var(--gold-soft);
+
+    font-weight:700;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+OVERLAY + SHEET
+========================================================= */
+
+.overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.62);
+
+    backdrop-filter:blur(12px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.45s ease;
+
+    z-index:80;
+
+}
+
+.overlay.active{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+.sheet{
+
+    position:fixed;
+
+    top:0;
+    right:-580px;
+
+    width:560px;
+    max-width:100%;
+
+    height:100vh;
+
+    background:#0f151d;
+
+    z-index:100;
+
+    transition:
+    .75s cubic-bezier(.19,1,.22,1);
+
+    overflow:auto;
+
+    border-left:1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+    -30px 0 90px rgba(0,0,0,.4);
+
+}
+
+.sheet.active{
+    right:0;
+}
+
+.sheet-content{
+    padding:34px;
+}
+
+.sheet-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.close{
+
+    width:46px;
+    height:46px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#1b2530;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+.sheet h2{
+
+    margin-top:28px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:64px;
+
+    line-height:.9;
+
+}
+
+.sheet p{
+
+    margin-top:18px;
+
+    line-height:2;
+
+    color:var(--muted);
+
+}
+
+.actions{
+
+    margin-top:32px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.action{
+
+    background:#141d26;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:28px;
+
+    padding:24px;
+
+    transition:
+    .55s cubic-bezier(.19,1,.22,1);
+
+    cursor:pointer;
+
+}
+
+.action:hover{
+
+    transform:translateX(8px);
+
+    border-color:
+    rgba(211,177,121,.18);
+
+}
+
+.action-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.action small{
+
+    color:var(--gold);
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+}
+
+.action span{
+
+    background:#1d2935;
+
+    padding:8px 12px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+}
+
+.action h3{
+
+    margin-top:16px;
+
+    font-size:22px;
+
+}
+
+.action p{
+
+    margin-top:10px;
+
+    font-size:13px;
+
+}
+
+/* =========================================================
+TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:24px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:
+    linear-gradient(
+        to right,
+        #d2ab73,
+        #f2d5ab
+    );
+
+    color:#111;
+
+    padding:15px 24px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    z-index:120;
+
+    animation:fadeUp .4s ease;
+
+}
+
+/* =========================================================
+ANIMATION
+========================================================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes growBar{
+
+    to{
+        width:100%;
+    }
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+    .top h1{
+        font-size:60px;
+    }
+
+}
+
+@media(max-width:767px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .feed-grid{
+        grid-template-columns:1fr;
+    }
+
+    .right-column{
+        position:relative;
+        top:auto;
+    }
+
+    .sheet{
+        width:100%;
+    }
+
+    .top h1{
+        font-size:44px;
+    }
+
+}

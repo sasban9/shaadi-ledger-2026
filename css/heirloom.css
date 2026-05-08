@@ -1,0 +1,614 @@
+/* =========================================================
+VOWLEDGER — HEIRLOOM THEME
+Replace the existing :root and major visual styles with this
+========================================================= */
+
+:root{
+
+    --bg:#efe2cd;
+    --bg2:#e3d3bc;
+
+    --panel:#f5ead8;
+    --panel2:#eadbc6;
+
+    --line:rgba(74,52,34,.12);
+
+    --gold:#8a5c39;
+    --gold-soft:#b1835f;
+
+    --text:#34261b;
+    --muted:#7d6857;
+
+    --green:#6f8662;
+
+    --shadow:
+    0 18px 40px rgba(74,52,34,.08);
+
+}
+
+/* =========================================================
+GLOBAL RESET
+========================================================= */
+
+body{
+
+    background:
+    radial-gradient(circle at top,#f7efe3 0%,#efe2cd 42%);
+
+    color:var(--text);
+
+    font-family:'Source Sans Pro',sans-serif;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* PAPER TEXTURE */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+    radial-gradient(rgba(80,60,40,.04) 1px, transparent 1px);
+
+    background-size:4px 4px;
+
+    opacity:.55;
+
+}
+
+/* FADED VINTAGE EDGES */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    box-shadow:
+    inset 0 0 180px rgba(70,45,25,.14);
+
+}
+
+/* =========================================================
+SCROLLBAR
+========================================================= */
+
+body::-webkit-scrollbar{
+    width:10px;
+}
+
+body::-webkit-scrollbar-thumb{
+
+    background:#b79c7e;
+
+    border-radius:999px;
+
+}
+
+/* =========================================================
+TYPOGRAPHY
+========================================================= */
+
+.top small,
+.ai-card small,
+.action small{
+
+    color:var(--gold);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+}
+
+.top h1,
+.panel h2,
+.sheet h2{
+
+    font-family:'EB Garamond',serif;
+
+    color:#2f2116;
+
+    letter-spacing:-.03em;
+
+}
+
+/* MAIN HERO TITLE */
+
+.top h1{
+
+    margin-top:18px;
+
+    font-size:82px;
+
+    line-height:.92;
+
+}
+
+/* BODY TEXT */
+
+.top p,
+.panel p,
+.feed-text,
+.sheet p,
+.action p{
+
+    color:var(--muted);
+
+    line-height:2;
+
+}
+
+/* =========================================================
+PANELS
+========================================================= */
+
+.feed-card,
+.panel,
+.action,
+.clan{
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(255,255,255,.52),
+        rgba(240,228,208,.92)
+    );
+
+    border:1px solid rgba(88,62,41,.12);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* =========================================================
+CARDS
+========================================================= */
+
+.feed-card{
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.45s ease;
+
+    position:relative;
+
+}
+
+/* SCRAPBOOK FEEL */
+
+.feed-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:12px;
+    right:12px;
+
+    width:70px;
+    height:70px;
+
+    background:
+    radial-gradient(
+        rgba(138,92,57,.08),
+        transparent
+    );
+
+    border-radius:50%;
+
+}
+
+.feed-card:hover{
+
+    transform:
+    translateY(-3px)
+    rotate(-.4deg);
+
+    border-color:
+    rgba(138,92,57,.22);
+
+}
+
+/* =========================================================
+IMAGES
+========================================================= */
+
+.feed-image{
+
+    height:250px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+/* SEPIA PHOTO LOOK */
+
+.feed-image img,
+.avatar img{
+
+    filter:
+    sepia(.18)
+    saturate(.82)
+    contrast(.96)
+    brightness(.98);
+
+}
+
+.feed-image::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(255,255,255,.02),
+        rgba(90,60,40,.08)
+    );
+
+    pointer-events:none;
+
+}
+
+/* =========================================================
+CONTENT
+========================================================= */
+
+.feed-content{
+    padding:22px;
+}
+
+.user h4{
+
+    font-size:14px;
+
+    color:#38271b;
+
+}
+
+.user p{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:#8f7a67;
+
+}
+
+.energy-text{
+
+    color:#7f5a3b;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+/* =========================================================
+TAGS
+========================================================= */
+
+.tag{
+
+    background:#efe3d2;
+
+    border:1px solid rgba(80,58,38,.08);
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    color:#5d4635;
+
+}
+
+/* =========================================================
+ENERGY BAR
+========================================================= */
+
+.energy-wrap{
+
+    margin-top:20px;
+
+    height:10px;
+
+    background:#ddceb8;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.energy-bar{
+
+    background:
+    linear-gradient(
+        to right,
+        #8a5c39,
+        #c39b78
+    );
+
+}
+
+/* =========================================================
+AI CARD
+========================================================= */
+
+.ai-card{
+    padding:30px;
+}
+
+.ai-card p{
+
+    margin-top:16px;
+
+    line-height:2;
+
+    font-size:18px;
+
+    color:#473325;
+
+    font-family:'EB Garamond',serif;
+
+    font-style:italic;
+
+}
+
+/* =========================================================
+RIGHT COLUMN
+========================================================= */
+
+.panel{
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+}
+
+.panel-content{
+    padding:26px;
+}
+
+/* =========================================================
+BUTTONS
+========================================================= */
+
+.cta{
+
+    width:100%;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #8a5c39,
+        #b78a65
+    );
+
+    color:#fff8f1;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+
+    box-shadow:
+    0 10px 20px rgba(138,92,57,.14);
+
+}
+
+.cta:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.95;
+
+}
+
+/* =========================================================
+LEADERBOARD
+========================================================= */
+
+.leaderboard{
+
+    margin-top:22px;
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+
+}
+
+.clan{
+
+    border-radius:20px;
+
+    padding:16px;
+
+    transition:.35s ease;
+
+}
+
+.clan:hover{
+
+    transform:translateX(5px);
+
+    border-color:
+    rgba(138,92,57,.18);
+
+}
+
+.rank{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#dbc6ae;
+
+    color:#6f4b31;
+
+    font-weight:700;
+
+}
+
+.points{
+
+    color:#6c7b5d;
+
+    font-weight:700;
+
+}
+
+/* =========================================================
+SHEET
+========================================================= */
+
+.sheet{
+
+    background:#f2e5d2;
+
+    border-left:
+    1px solid rgba(88,62,41,.12);
+
+}
+
+.sheet-content{
+    padding:30px;
+}
+
+.close{
+
+    background:#dcc8af;
+
+    color:#523b29;
+
+}
+
+/* =========================================================
+ACTIONS
+========================================================= */
+
+.action{
+
+    border-radius:22px;
+
+    transition:.35s ease;
+
+}
+
+.action:hover{
+
+    transform:
+    translateX(5px)
+    rotate(-.3deg);
+
+}
+
+/* =========================================================
+TOAST
+========================================================= */
+
+.toast{
+
+    background:
+    linear-gradient(
+        to right,
+        #8a5c39,
+        #b28560
+    );
+
+    color:#fff8f1;
+
+    padding:14px 22px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 10px 30px rgba(138,92,57,.18);
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:767px){
+
+    .top h1{
+        font-size:50px;
+    }
+
+}
+
+/* =========================================================
+OPTIONAL EXTRA HEIRLOOM DETAILS
+========================================================= */
+
+/* Add this class to selected cards for scrapbook effect */
+
+.scrapbook{
+
+    transform:rotate(-1deg);
+
+}
+
+/* handwritten feeling */
+
+.handwritten{
+
+    font-family:'EB Garamond',serif;
+
+    font-style:italic;
+
+    color:#6d4d35;
+
+}
+
+/* faded archive mode */
+
+.faded{
+
+    opacity:.92;
+
+    filter:sepia(.08);
+
+}

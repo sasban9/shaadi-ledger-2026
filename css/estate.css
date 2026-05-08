@@ -1,0 +1,701 @@
+/* =========================================================
+ESTATE THEME
+========================================================= */
+
+:root{
+
+    --bg:#121110;
+    --bg-soft:#1b1917;
+
+    --panel:#181614;
+    --panel2:#201c19;
+
+    --line:rgba(255,255,255,.07);
+
+    --gold:#c8a46f;
+    --gold-bright:#ead1a4;
+
+    --text:#f4eee3;
+    --muted:#aa9f90;
+
+    --green:#d7bc8a;
+
+    --shadow:
+    0 25px 80px rgba(0,0,0,.42);
+
+}
+
+/* =========================================================
+BODY
+========================================================= */
+
+body{
+
+    background:
+    radial-gradient(
+        circle at top,
+        #2b2521 0%,
+        #121110 46%
+    );
+
+    color:var(--text);
+
+    font-family:'Inter',sans-serif;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* subtle grain */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+    radial-gradient(
+        rgba(255,255,255,.05) 1px,
+        transparent 1px
+    );
+
+    background-size:3px 3px;
+
+    opacity:.18;
+
+}
+
+/* =========================================================
+SCROLLBAR
+========================================================= */
+
+body::-webkit-scrollbar{
+    width:10px;
+}
+
+body::-webkit-scrollbar-thumb{
+
+    background:#3a3028;
+
+    border-radius:999px;
+
+}
+
+/* =========================================================
+TYPOGRAPHY
+========================================================= */
+
+.top small{
+
+    color:var(--gold);
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+}
+
+.top h1{
+
+    margin-top:18px;
+
+    font-size:84px;
+
+    line-height:.9;
+
+    font-family:'Playfair Display',serif;
+
+    font-weight:600;
+
+    letter-spacing:-.04em;
+
+    max-width:850px;
+
+}
+
+.top p{
+
+    margin-top:22px;
+
+    max-width:880px;
+
+    line-height:2;
+
+    color:var(--muted);
+
+    font-size:15px;
+
+}
+
+/* =========================================================
+FEED CARDS
+========================================================= */
+
+.feed-card{
+
+    background:
+    linear-gradient(
+        to bottom,
+        var(--panel),
+        #141210
+    );
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    animation:fadeUp .7s ease;
+
+    transition:
+    .7s cubic-bezier(.19,1,.22,1);
+
+    box-shadow:var(--shadow);
+
+}
+
+.feed-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:
+    rgba(200,164,111,.22);
+
+}
+
+.feed-image{
+
+    height:260px;
+
+    overflow:hidden;
+
+}
+
+.feed-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:1.5s ease;
+
+    filter:
+    brightness(.82)
+    contrast(1.04)
+    saturate(.88);
+
+}
+
+.feed-card:hover img{
+    transform:scale(1.06);
+}
+
+.feed-content{
+    padding:24px;
+}
+
+/* =========================================================
+USER
+========================================================= */
+
+.avatar{
+
+    width:56px;
+    height:56px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:2px solid rgba(200,164,111,.14);
+
+}
+
+.user h4{
+
+    font-size:14px;
+
+    color:var(--text);
+
+}
+
+.user p{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:var(--muted);
+
+}
+
+/* =========================================================
+ENERGY
+========================================================= */
+
+.energy-text{
+
+    color:var(--gold-bright);
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.feed-text{
+
+    margin-top:20px;
+
+    line-height:1.95;
+
+    color:#dfd6c7;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+TAGS
+========================================================= */
+
+.tags{
+
+    margin-top:20px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.tag{
+
+    background:#161310;
+
+    border:1px solid rgba(255,255,255,.04);
+
+    padding:10px 15px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    color:#d5cab8;
+
+}
+
+/* =========================================================
+ENERGY BAR
+========================================================= */
+
+.energy-wrap{
+
+    margin-top:22px;
+
+    height:10px;
+
+    background:#100e0c;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.energy-bar{
+
+    height:100%;
+
+    width:0%;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #c49b63,
+        #f0d6a9
+    );
+
+    animation:growBar 1.5s forwards;
+
+}
+
+/* =========================================================
+AI CARD
+========================================================= */
+
+.ai-card{
+
+    padding:34px;
+
+}
+
+.ai-card small{
+
+    color:var(--gold);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+}
+
+.ai-card p{
+
+    margin-top:20px;
+
+    line-height:2;
+
+    font-size:19px;
+
+    color:#f4eee3;
+
+    font-family:'Playfair Display',serif;
+
+}
+
+/* =========================================================
+RIGHT COLUMN PANELS
+========================================================= */
+
+.panel{
+
+    background:
+    linear-gradient(
+        to bottom,
+        var(--panel2),
+        #171411
+    );
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+.panel-content{
+    padding:28px;
+}
+
+.panel h2{
+
+    margin-top:26px;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:48px;
+
+    line-height:1;
+
+}
+
+.panel p{
+
+    margin-top:14px;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+BUTTONS
+========================================================= */
+
+.cta{
+
+    width:100%;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #be945b,
+        #e8c791
+    );
+
+    color:#18130f;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+    .55s cubic-bezier(.19,1,.22,1);
+
+}
+
+.cta:hover{
+
+    transform:
+    translateY(-3px);
+
+}
+
+/* =========================================================
+LEADERBOARD
+========================================================= */
+
+.clan{
+
+    background:#181411;
+
+    border:1px solid rgba(255,255,255,.04);
+
+    border-radius:26px;
+
+    padding:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    transition:.5s ease;
+
+}
+
+.clan:hover{
+
+    transform:translateX(6px);
+
+    border-color:
+    rgba(200,164,111,.18);
+
+}
+
+.rank{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#2a221c;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold-bright);
+
+    font-weight:700;
+
+}
+
+.clan h4{
+
+    font-size:14px;
+
+}
+
+.clan small{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:var(--muted);
+
+}
+
+.points{
+
+    color:var(--gold-bright);
+
+    font-weight:700;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+SHEET
+========================================================= */
+
+.sheet{
+
+    background:#141210;
+
+    border-left:1px solid rgba(255,255,255,.06);
+
+}
+
+.sheet-content{
+    padding:32px;
+}
+
+.sheet h2{
+
+    margin-top:28px;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:64px;
+
+    line-height:.92;
+
+}
+
+.sheet p{
+
+    margin-top:18px;
+
+    line-height:2;
+
+    color:var(--muted);
+
+}
+
+.close{
+
+    width:46px;
+    height:46px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#241d18;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+.action{
+
+    background:#1a1613;
+
+    border:1px solid rgba(255,255,255,.04);
+
+    border-radius:28px;
+
+    padding:24px;
+
+    transition:
+    .55s cubic-bezier(.19,1,.22,1);
+
+    cursor:pointer;
+
+}
+
+.action:hover{
+
+    transform:translateX(8px);
+
+    border-color:
+    rgba(200,164,111,.18);
+
+}
+
+.action small{
+
+    color:var(--gold);
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+}
+
+.action span{
+
+    background:#2a221c;
+
+    padding:8px 12px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+}
+
+.action h3{
+
+    margin-top:16px;
+
+    font-size:22px;
+
+    font-family:'Playfair Display',serif;
+
+}
+
+.action p{
+
+    margin-top:12px;
+
+    font-size:13px;
+
+}
+
+/* =========================================================
+TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:24px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:
+    linear-gradient(
+        to right,
+        #c59c64,
+        #efd4ab
+    );
+
+    color:#18120f;
+
+    padding:15px 24px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    z-index:120;
+
+    animation:fadeUp .4s ease;
+
+}

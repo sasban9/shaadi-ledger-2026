@@ -1,0 +1,652 @@
+/* =========================================================
+GARDEN THEME
+========================================================= */
+
+:root{
+
+    --bg:#101511;
+    --panel:#18201a;
+    --panel2:#1e2821;
+
+    --line:rgba(255,255,255,.06);
+
+    --accent:#c2aa72;
+    --accent2:#e4d1a2;
+
+    --text:#edf0e7;
+    --muted:#a7b3a5;
+
+    --green:#9fd6a5;
+
+    --shadow:
+    0 24px 70px rgba(0,0,0,.32);
+
+}
+
+/* =========================================================
+BODY
+========================================================= */
+
+body{
+
+    background:
+    radial-gradient(circle at top,#243127 0%,#101511 52%);
+
+    color:var(--text);
+
+    font-family:'Inter',sans-serif;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* subtle botanical atmosphere */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        rgba(255,255,255,.035) 1px,
+        transparent 1px
+    );
+
+    background-size:4px 4px;
+
+    opacity:.22;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        circle at 15% 20%,
+        rgba(194,170,114,.06),
+        transparent 18%
+    ),
+
+    radial-gradient(
+        circle at 85% 75%,
+        rgba(194,170,114,.05),
+        transparent 20%
+    );
+
+}
+
+/* =========================================================
+SCROLLBAR
+========================================================= */
+
+body::-webkit-scrollbar{
+    width:10px;
+}
+
+body::-webkit-scrollbar-thumb{
+
+    background:#314235;
+
+    border-radius:999px;
+
+}
+
+/* =========================================================
+TYPOGRAPHY
+========================================================= */
+
+.top small,
+.ai-card small,
+.action small{
+
+    color:var(--accent);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    font-size:11px;
+
+}
+
+.top h1,
+.panel h2,
+.sheet h2{
+
+    font-family:'Cormorant Infant',serif;
+
+    letter-spacing:-.04em;
+
+}
+
+.top h1{
+
+    margin-top:18px;
+
+    font-size:82px;
+
+    line-height:.9;
+
+}
+
+.top p{
+
+    margin-top:22px;
+
+    max-width:920px;
+
+    line-height:2;
+
+    color:var(--muted);
+
+}
+
+/* =========================================================
+FEED CARDS
+========================================================= */
+
+.feed-card{
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(24,32,26,.95),
+        rgba(18,24,20,.98)
+    );
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    transition:.55s cubic-bezier(.19,1,.22,1);
+
+    box-shadow:var(--shadow);
+
+    backdrop-filter:blur(12px);
+
+}
+
+.feed-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:
+    rgba(194,170,114,.24);
+
+}
+
+.feed-image{
+
+    height:240px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.feed-image::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        transparent,
+        rgba(16,21,17,.15)
+    );
+
+}
+
+.feed-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+    brightness(.88)
+    saturate(.88)
+    contrast(1.02);
+
+    transition:1.5s ease;
+
+}
+
+.feed-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+.feed-content{
+
+    padding:24px;
+
+}
+
+/* =========================================================
+AVATAR
+========================================================= */
+
+.avatar{
+
+    width:54px;
+    height:54px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:
+    2px solid rgba(194,170,114,.14);
+
+    box-shadow:
+    0 0 0 6px rgba(255,255,255,.015);
+
+}
+
+/* =========================================================
+TEXT
+========================================================= */
+
+.user p,
+.panel p,
+.sheet p{
+
+    color:var(--muted);
+
+}
+
+.feed-text{
+
+    margin-top:18px;
+
+    line-height:1.95;
+
+    color:#dde6dc;
+
+    font-size:14px;
+
+}
+
+.energy-text{
+
+    color:var(--green);
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+/* =========================================================
+TAGS
+========================================================= */
+
+.tag{
+
+    background:#121a14;
+
+    border:1px solid rgba(255,255,255,.04);
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    color:#d7dfd6;
+
+}
+
+/* =========================================================
+ENERGY BAR
+========================================================= */
+
+.energy-wrap{
+
+    margin-top:20px;
+
+    height:10px;
+
+    background:#101712;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.energy-bar{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #b69c66,
+        #e3d1a2
+    );
+
+}
+
+/* =========================================================
+AI CARD
+========================================================= */
+
+.ai-card{
+
+    padding:30px;
+
+    background:
+    radial-gradient(
+        circle at top right,
+        rgba(194,170,114,.08),
+        transparent 30%
+    );
+
+}
+
+.ai-card p{
+
+    margin-top:18px;
+
+    line-height:1.9;
+
+    font-size:17px;
+
+    color:#f0f4eb;
+
+}
+
+/* =========================================================
+RIGHT PANEL
+========================================================= */
+
+.panel{
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(30,40,33,.98),
+        rgba(20,26,22,.98)
+    );
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    backdrop-filter:blur(12px);
+
+}
+
+.panel-content{
+
+    padding:28px;
+
+}
+
+/* =========================================================
+BUTTONS
+========================================================= */
+
+.cta{
+
+    width:100%;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #b99f69,
+        #e4d2a5
+    );
+
+    color:#142017;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+    .45s cubic-bezier(.19,1,.22,1);
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.18);
+
+}
+
+.cta:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.015);
+
+}
+
+/* =========================================================
+LEADERBOARD
+========================================================= */
+
+.clan{
+
+    background:#162019;
+
+    border:1px solid rgba(255,255,255,.04);
+
+    border-radius:26px;
+
+    padding:16px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    transition:.4s ease;
+
+}
+
+.clan:hover{
+
+    transform:translateX(6px);
+
+    border-color:
+    rgba(194,170,114,.18);
+
+}
+
+.rank{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#223126;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:var(--accent2);
+
+    font-weight:700;
+
+}
+
+.points{
+
+    color:var(--green);
+
+    font-weight:700;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+SHEET
+========================================================= */
+
+.overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(14px);
+
+}
+
+.sheet{
+
+    background:#121914;
+
+    border-left:
+    1px solid rgba(255,255,255,.06);
+
+}
+
+.sheet-content{
+
+    padding:30px;
+
+}
+
+/* =========================================================
+ACTIONS
+========================================================= */
+
+.action{
+
+    background:#18211a;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:28px;
+
+    padding:22px;
+
+    transition:
+    .45s cubic-bezier(.19,1,.22,1);
+
+}
+
+.action:hover{
+
+    transform:translateX(8px);
+
+    border-color:
+    rgba(194,170,114,.2);
+
+}
+
+.action span{
+
+    background:#243128;
+
+    padding:8px 12px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    color:#dfe7dd;
+
+}
+
+.action h3{
+
+    margin-top:14px;
+
+    font-size:22px;
+
+    color:#edf0e7;
+
+}
+
+/* =========================================================
+TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:24px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:
+    linear-gradient(
+        to right,
+        #baa06b,
+        #e5d3a8
+    );
+
+    color:#162019;
+
+    padding:14px 24px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    z-index:120;
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.22);
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:767px){
+
+    .top h1{
+        font-size:52px;
+    }
+
+}
