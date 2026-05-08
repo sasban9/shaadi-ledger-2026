@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>VowLedger — Founding Chapter</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- STRUCTURE -->
+<style>
+
+/* =========================================================
+BASE.CSS
+========================================================= */
+
+:root{
+
+    --container:1320px;
+
+    --section-spacing:120px;
+
+    --radius-xl:34px;
+    --radius-lg:28px;
+    --radius-md:20px;
+
+    --transition:
+    all .8s cubic-bezier(.19,1,.22,1);
+
+}
+
+/* =========================================================
+RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-x:hidden;
+    font-family:var(--font-body);
+    background:var(--bg);
+    color:var(--text-primary);
+    line-height:1.8;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    border:none;
+    outline:none;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+/* =========================================================
+GLOBAL
+========================================================= */
+
+.vl-container{
+    width:min(92%, var(--container));
+    margin:auto;
+}
+
+.vl-section{
+    padding:var(--section-spacing) 0;
+}
+
+.vl-eyebrow{
+    font-size:12px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:18px;
+}
+
+.vl-heading{
+    font-family:var(--font-heading);
+    font-size:clamp(40px,5vw,82px);
+    line-height:.95;
+    font-weight:500;
+    letter-spacing:-.03em;
+}
+
+.vl-copy{
+    max-width:720px;
+    font-size:17px;
+    color:var(--text-secondary);
+}
+
+.vl-btn{
+    padding:18px 30px;
+    border-radius:999px;
+    transition:var(--transition);
+}
+
+.vl-btn-primary{
+    background:var(--accent);
+    color:#111;
+}
+
+.vl-btn-secondary{
+    border:1px solid var(--border-soft);
+    background:transparent;
+    color:var(--text-primary);
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.vl-header{
+
+    position:fixed;
+    top:22px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:min(92%,1280px);
+
+    z-index:1000;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(10,10,10,.42);
+
+    border:1px solid var(--border-soft);
+
+    border-radius:999px;
+
+}
+
+.vl-header-inner{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 28px;
+}
+
+.vl-logo{
+
+    font-family:var(--font-heading);
+    font-size:30px;
+    letter-spacing:.03em;
+}
+
+.vl-logo span{
+    color:var(--accent);
+}
+
+.vl-nav{
+
+    display:flex;
+    gap:34px;
+}
+
+.vl-nav a{
+
+    font-size:13px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--text-secondary);
+
+    transition:var(--transition);
+}
+
+.vl-nav a:hover{
+    color:var(--text-primary);
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.vl-hero{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.vl-hero-grid{
+
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:80px;
+    align-items:center;
+}
+
+.vl-hero-media{
+
+    position:relative;
+    border-radius:var(--radius-xl);
+    overflow:hidden;
+}
+
+.vl-hero-media img{
+
+    width:100%;
+    height:82vh;
+    object-fit:cover;
+
+    filter:
+    brightness(.85)
+    contrast(1.04)
+    saturate(.95);
+}
+
+.vl-hero-overlay{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.08)
+    );
+}
+
+.vl-hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.vl-hero-copy{
+
+    margin:34px 0 40px;
+}
+
+.vl-hero-actions{
+
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+EDITORIAL SECTION
+========================================================= */
+
+.vl-editorial-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.vl-editorial-card{
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border-soft);
+
+    border-radius:var(--radius-xl);
+
+    overflow:hidden;
+}
+
+.vl-editorial-card img{
+
+    height:420px;
+    width:100%;
+    object-fit:cover;
+}
+
+.vl-editorial-body{
+    padding:40px;
+}
+
+/* =========================================================
+ARCHIVE STRIP
+========================================================= */
+
+.vl-archive-strip{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+}
+
+.vl-memory{
+
+    position:relative;
+
+    min-height:420px;
+
+    border-radius:var(--radius-xl);
+
+    overflow:hidden;
+
+    border:1px solid var(--border-soft);
+}
+
+.vl-memory img{
+
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    filter:
+    brightness(.7)
+    contrast(1.02)
+    saturate(.95);
+}
+
+.vl-memory-content{
+
+    position:absolute;
+    bottom:0;
+    left:0;
+
+    padding:34px;
+    z-index:2;
+}
+
+/* =========================================================
+QUOTE
+========================================================= */
+
+.vl-quote{
+
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+}
+
+.vl-quote blockquote{
+
+    font-family:var(--font-heading);
+
+    font-size:clamp(40px,5vw,72px);
+
+    line-height:1.1;
+
+    color:var(--text-primary);
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+.vl-footer{
+
+    border-top:1px solid var(--border-soft);
+
+    padding:70px 0;
+}
+
+.vl-footer-grid{
+
+    display:grid;
+    grid-template-columns:1.2fr .8fr .7fr;
+    gap:60px;
+}
+
+.vl-footer h3{
+
+    font-family:var(--font-heading);
+
+    font-size:48px;
+    margin-bottom:18px;
+}
+
+.vl-footer-links{
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.vl-footer-meta{
+    color:var(--text-muted);
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media(max-width:1024px){
+
+    .vl-nav{
+        display:none;
+    }
+
+    .vl-hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .vl-editorial-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .vl-archive-strip{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .vl-footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:767px){
+
+    :root{
+        --section-spacing:90px;
+    }
+
+    .vl-header-inner{
+        padding:16px 22px;
+    }
+
+    .vl-hero{
+        padding-top:140px;
+    }
+
+    .vl-editorial-grid,
+    .vl-archive-strip,
+    .vl-footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .vl-heading{
+        line-height:1.02;
+    }
+
+    .vl-hero-media img{
+        height:58vh;
+    }
+
+    .vl-editorial-body{
+        padding:28px;
+    }
+
+    .vl-memory{
+        min-height:360px;
+    }
+
+}
+
+</style>
+
+<!-- VISUAL STYLE -->
+<style>
+
+/* =========================================================
+THEME-BENGAL.CSS
+========================================================= */
+
+body.theme-bengal{
+
+    --bg:#1b1414;
+    --bg-soft:#2a1e1e;
+
+    --text-primary:#f4ead9;
+    --text-secondary:#d3c2ad;
+    --text-muted:#978571;
+
+    --accent:#d7a35c;
+
+    --border-soft:rgba(255,255,255,.08);
+
+    --card-bg:rgba(255,255,255,.03);
+
+    --font-heading:'Cormorant Garamond', serif;
+    --font-body:'Inter', sans-serif;
+
+    background:
+    radial-gradient(
+    circle at top,
+    #2c1f1f 0%,
+    #171111 45%,
+    #120d0d 100%
+    );
+}
+
+.theme-bengal .vl-header{
+    background:rgba(24,18,18,.58);
+}
+
+.theme-bengal .vl-memory::after,
+.theme-bengal .vl-hero-media::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(0,0,0,.58),
+    rgba(0,0,0,.12)
+    );
+}
+
+.theme-bengal .vl-btn-primary:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 40px rgba(215,163,92,.18);
+}
+
+.theme-bengal .vl-editorial-card,
+.theme-bengal .vl-memory{
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.24);
+}
+
+</style>
+
+</head>
+
+<body class="theme-bengal">
+
+<!-- HEADER -->
+
+<header class="vl-header">
+
+    <div class="vl-header-inner">
+
+        <div class="vl-logo">
+            Vow<span>Ledger</span>
+        </div>
+
+        <nav class="vl-nav">
+            <a href="#">Story</a>
+            <a href="#">Archive</a>
+            <a href="#">Blessings</a>
+            <a href="#">Collections</a>
+            <a href="#">Legacy</a>
+        </nav>
+
+        <button class="vl-btn vl-btn-primary">
+            Add A Memory
+        </button>
+
+    </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="vl-hero">
+
+    <div class="vl-container">
+
+        <div class="vl-hero-grid">
+
+            <div class="vl-hero-content">
+
+                <div class="vl-eyebrow">
+                    FOUNDING CHAPTER
+                </div>
+
+                <h1 class="vl-heading">
+                    The Wedding Ends.<br>
+                    The Archive Should Not.
+                </h1>
+
+                <p class="vl-copy vl-hero-copy">
+                    A living emotional archive preserving blessings,
+                    photographs, voices, rituals, and stories across generations.
+                </p>
+
+                <div class="vl-hero-actions">
+
+                    <button class="vl-btn vl-btn-primary">
+                        Enter The Archive
+                    </button>
+
+                    <button class="vl-btn vl-btn-secondary">
+                        Explore Blessings
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="vl-hero-media">
+
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1600&auto=format&fit=crop" alt="">
+
+                <div class="vl-hero-overlay"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EDITORIAL -->
+
+<section class="vl-section">
+
+    <div class="vl-container">
+
+        <div class="vl-editorial-grid">
+
+            <div>
+
+                <div class="vl-eyebrow">
+                    FAMILY CONTINUITY
+                </div>
+
+                <h2 class="vl-heading">
+                    More Than A Wedding Website
+                </h2>
+
+                <p class="vl-copy" style="margin-top:28px;">
+                    Guests contribute stories, blessings,
+                    voice notes, old photographs,
+                    and emotional fragments that become
+                    part of a permanent family archive.
+                </p>
+
+            </div>
+
+            <article class="vl-editorial-card">
+
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop">
+
+                <div class="vl-editorial-body">
+
+                    <div class="vl-eyebrow">
+                        RECORDED FROM SILCHAR
+                    </div>
+
+                    <h3 style="
+                    font-family:var(--font-heading);
+                    font-size:42px;
+                    margin-bottom:16px;
+                    ">
+                        Grandmother’s Blessing
+                    </h3>
+
+                    <p class="vl-copy">
+                        “May your home always remain louder with laughter than silence.”
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ARCHIVE -->
+
+<section class="vl-section">
+
+    <div class="vl-container">
+
+        <div class="vl-eyebrow">
+            ARCHIVE COLLECTIONS
+        </div>
+
+        <h2 class="vl-heading" style="margin-bottom:60px;">
+            Fragments Worth Preserving
+        </h2>
+
+        <div class="vl-archive-strip">
+
+            <article class="vl-memory">
+
+                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1600&auto=format&fit=crop">
+
+                <div class="vl-memory-content">
+
+                    <div class="vl-eyebrow">
+                        THE ASSAM COLLECTION
+                    </div>
+
+                    <h3 style="
+                    font-family:var(--font-heading);
+                    font-size:42px;
+                    ">
+                        Before They Met
+                    </h3>
+
+                </div>
+
+            </article>
+
+            <article class="vl-memory">
+
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1600&auto=format&fit=crop">
+
+                <div class="vl-memory-content">
+
+                    <div class="vl-eyebrow">
+                        FOUNDING BLESSINGS
+                    </div>
+
+                    <h3 style="
+                    font-family:var(--font-heading);
+                    font-size:42px;
+                    ">
+                        Voices From The Family
+                    </h3>
+
+                </div>
+
+            </article>
+
+            <article class="vl-memory">
+
+                <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=1600&auto=format&fit=crop">
+
+                <div class="vl-memory-content">
+
+                    <div class="vl-eyebrow">
+                        RITUAL ARCHIVE
+                    </div>
+
+                    <h3 style="
+                    font-family:var(--font-heading);
+                    font-size:42px;
+                    ">
+                        Traditions That Survive
+                    </h3>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- QUOTE -->
+
+<section class="vl-section">
+
+    <div class="vl-container">
+
+        <div class="vl-quote">
+
+            <blockquote>
+                “The wedding lasted a few days.
+                The archive may survive generations.”
+            </blockquote>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="vl-footer">
+
+    <div class="vl-container">
+
+        <div class="vl-footer-grid">
+
+            <div>
+
+                <h3>VowLedger</h3>
+
+                <p class="vl-copy">
+                    Emotional continuity infrastructure for families.
+                </p>
+
+            </div>
+
+            <div class="vl-footer-links">
+
+                <a href="#">Archive</a>
+                <a href="#">Blessings</a>
+                <a href="#">Collections</a>
+                <a href="#">Founding Chapter</a>
+                <a href="#">Family Vault</a>
+
+            </div>
+
+            <div class="vl-footer-meta">
+
+                Recorded During The Founding Season · 2026
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

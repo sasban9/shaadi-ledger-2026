@@ -49,6 +49,28 @@
 
             <button class="close" onclick="closeSheet()">✕</button>
 
+        </div>        <!-- RIGHT -->
+
+        <div class="right-column">
+
+            <div class="panel">
+
+                <div class="panel-content">
+
+                    <h2>
+                        Clan Energy
+                    </h2>
+
+                    <p>
+                        Rankings constantly shift based on emotional resonance, uniqueness and unpredictable wedding momentum.
+                    </p>
+
+                    <div class="leaderboard" id="leaderboard"></div>
+
+                </div>
+
+            </div>
+
         </div>
 
         <h2>
@@ -83,37 +105,14 @@
 
     <div class="layout">
 
+                    <button class="cta" onclick="openSheet()">
+                        Add To Today’s Story
+                    </button>
         <!-- LEFT -->
 
         <div class="feed-grid" id="feed"></div>
 
-        <!-- RIGHT -->
-
-        <div class="right-column">
-
-            <div class="panel">
-
-                <div class="panel-content">
-
-                    <button class="cta" onclick="openSheet()">
-                        Add To Today’s Story
-                    </button>
-
-                    <h2>
-                        Clan Energy
-                    </h2>
-
-                    <p>
-                        Rankings constantly shift based on emotional resonance, uniqueness and unpredictable wedding momentum.
-                    </p>
-
-                    <div class="leaderboard" id="leaderboard"></div>
-
-                </div>
-
-            </div>
-
-        </div>
+        
 
     </div>
 
@@ -311,6 +310,9 @@ function createFeedCard(){
                 <p>
                     The Delhi Delegation has suddenly surged in emotional resonance after three hidden college archives surfaced tonight.
                 </p>
+                <button class="cta" onclick="openSheet()">
+                    Add To Today’s Story
+                </button>
 
             </div>
 

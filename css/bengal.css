@@ -148,7 +148,7 @@ LAYOUT
 
     display:grid;
 
-    grid-template-columns:1.55fr .92fr;
+    /* grid-template-columns:1.55fr .92fr; */
 
     gap:28px;
 
