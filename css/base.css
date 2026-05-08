@@ -507,3 +507,22 @@ body::-webkit-scrollbar-thumb{
     }
 
 }
+
+/* OPTIONAL STYLING */
+.theme-switcher{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:9999;
+}
+
+.theme-switcher select{
+    background:#111;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.15);
+    padding:12px 18px;
+    border-radius:14px;
+    font-size:14px;
+    backdrop-filter:blur(10px);
+    outline:none;
+}

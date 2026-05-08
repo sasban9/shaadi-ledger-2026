@@ -1,0 +1,866 @@
+/* =========================================================
+BENGAL THEME OVERRIDE
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Hind+Siliguri:wght@300;400;500;600&display=swap');
+
+:root{
+
+    --bg:#1b1414;
+    --panel:#241919;
+    --panel2:#2b1d1d;
+
+    --line:rgba(255,255,255,.06);
+
+    --gold:#d7a35c;
+    --gold-soft:#f1c98b;
+
+    --text:#f4ead9;
+    --muted:#b7a692;
+
+    --green:#e2bc7d;
+
+    --shadow:
+    0 24px 80px rgba(0,0,0,.45);
+
+}
+
+/* =========================================================
+BODY
+========================================================= */
+
+body{
+
+    background:
+    radial-gradient(circle at top,#3a2222 0%,#1b1414 48%);
+
+    color:var(--text);
+
+    font-family:'Hind Siliguri',sans-serif;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* subtle literary texture */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+    radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+
+    background-size:3px 3px;
+
+    opacity:.18;
+
+}
+
+/* scrollbar */
+
+body::-webkit-scrollbar{
+    width:10px;
+}
+
+body::-webkit-scrollbar-thumb{
+
+    background:#46302d;
+
+    border-radius:999px;
+
+}
+
+/* =========================================================
+CONTAINER
+========================================================= */
+
+.container{
+    width:min(1680px,94%);
+    margin:auto;
+    padding:40px 0 120px;
+}
+
+/* =========================================================
+TOP
+========================================================= */
+
+.top{
+    margin-bottom:40px;
+}
+
+.top small{
+
+    color:var(--gold);
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+}
+
+.top h1{
+
+    margin-top:18px;
+
+    font-size:clamp(4rem,8vw,7rem);
+
+    line-height:.9;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-weight:600;
+
+    letter-spacing:-.04em;
+
+    max-width:900px;
+
+}
+
+.top p{
+
+    margin-top:24px;
+
+    max-width:900px;
+
+    line-height:2.1;
+
+    color:var(--muted);
+
+    font-size:1rem;
+
+}
+
+/* =========================================================
+LAYOUT
+========================================================= */
+
+.layout{
+
+    display:grid;
+
+    grid-template-columns:1.55fr .92fr;
+
+    gap:28px;
+
+    align-items:start;
+
+}
+
+/* =========================================================
+FEED GRID
+========================================================= */
+
+.feed-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:24px;
+
+}
+
+/* =========================================================
+FEED CARD
+========================================================= */
+
+.feed-card{
+
+    background:
+    linear-gradient(
+        to bottom,
+        var(--panel),
+        #1c1414
+    );
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    transition:
+    .65s cubic-bezier(.19,1,.22,1);
+
+    box-shadow:var(--shadow);
+
+}
+
+.feed-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:
+    rgba(215,163,92,.18);
+
+}
+
+.feed-image{
+    height:250px;
+    overflow:hidden;
+}
+
+.feed-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+    brightness(.78)
+    saturate(.88)
+    contrast(1.02);
+
+    transition:1.6s ease;
+
+}
+
+.feed-card:hover img{
+    transform:scale(1.06);
+}
+
+/* =========================================================
+FEED CONTENT
+========================================================= */
+
+.feed-content{
+    padding:24px;
+}
+
+.feed-top{
+
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+
+}
+
+.user{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+}
+
+.avatar{
+
+    width:54px;
+    height:54px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:2px solid rgba(215,163,92,.14);
+
+}
+
+.avatar img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.user h4{
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+.user p{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:var(--muted);
+
+}
+
+.energy-text{
+
+    color:var(--gold-soft);
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+/* =========================================================
+TEXT
+========================================================= */
+
+.feed-text{
+
+    margin-top:20px;
+
+    line-height:2;
+
+    color:#ebdfce;
+
+    font-size:15px;
+
+}
+
+/* =========================================================
+TAGS
+========================================================= */
+
+.tags{
+
+    margin-top:20px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+
+}
+
+.tag{
+
+    background:#1a1313;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    padding:10px 15px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    color:#e6d4bc;
+
+}
+
+/* =========================================================
+ENERGY BAR
+========================================================= */
+
+.energy-wrap{
+
+    margin-top:22px;
+
+    height:10px;
+
+    background:#130d0d;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.energy-bar{
+
+    height:100%;
+
+    width:0%;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #c78b48,
+        #f0c98d
+    );
+
+    animation:growBar 1.4s forwards;
+
+}
+
+/* =========================================================
+AI CARD
+========================================================= */
+
+.ai-card{
+    padding:34px;
+}
+
+.ai-card small{
+
+    color:var(--gold);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+}
+
+.ai-card p{
+
+    margin-top:20px;
+
+    line-height:2;
+
+    font-size:20px;
+
+    color:#f5ebdb;
+
+    font-family:'Cormorant Garamond',serif;
+
+}
+
+/* =========================================================
+RIGHT COLUMN
+========================================================= */
+
+.right-column{
+
+    position:sticky;
+    top:18px;
+
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+
+}
+
+/* =========================================================
+PANELS
+========================================================= */
+
+.panel{
+
+    background:
+    linear-gradient(
+        to bottom,
+        var(--panel2),
+        #211717
+    );
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+.panel-content{
+    padding:28px;
+}
+
+/* =========================================================
+CTA
+========================================================= */
+
+.cta{
+
+    width:100%;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        to right,
+        #c48743,
+        #e6bd80
+    );
+
+    color:#1b1414;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+    .55s cubic-bezier(.19,1,.22,1);
+
+}
+
+.cta:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.01);
+
+}
+
+/* =========================================================
+PANEL TYPOGRAPHY
+========================================================= */
+
+.panel h2{
+
+    margin-top:28px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:56px;
+
+    line-height:.92;
+
+}
+
+.panel p{
+
+    margin-top:16px;
+
+    color:var(--muted);
+
+    line-height:2;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+LEADERBOARD
+========================================================= */
+
+.leaderboard{
+
+    margin-top:24px;
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+
+}
+
+.clan{
+
+    background:#1d1515;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:26px;
+
+    padding:18px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    transition:
+    .45s ease;
+
+}
+
+.clan:hover{
+
+    transform:translateX(6px);
+
+    border-color:
+    rgba(215,163,92,.2);
+
+}
+
+.clan-left{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+}
+
+.rank{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#342222;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold-soft);
+
+    font-weight:700;
+
+}
+
+.clan h4{
+
+    font-size:14px;
+
+}
+
+.clan small{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:var(--muted);
+
+}
+
+.points{
+
+    color:var(--gold-soft);
+
+    font-weight:700;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+SHEET
+========================================================= */
+
+.sheet{
+
+    background:#170f0f;
+
+    border-left:
+    1px solid rgba(255,255,255,.06);
+
+}
+
+.sheet-content{
+    padding:32px;
+}
+
+.sheet h2{
+
+    margin-top:26px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:64px;
+
+    line-height:.9;
+
+}
+
+.sheet p{
+
+    margin-top:16px;
+
+    line-height:2;
+
+    color:var(--muted);
+
+}
+
+.close{
+
+    width:46px;
+    height:46px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#2b1f1f;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+/* =========================================================
+ACTION CARDS
+========================================================= */
+
+.action{
+
+    background:#221818;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:28px;
+
+    padding:24px;
+
+    transition:
+    .5s cubic-bezier(.19,1,.22,1);
+
+    cursor:pointer;
+
+}
+
+.action:hover{
+
+    transform:translateX(8px);
+
+    border-color:
+    rgba(215,163,92,.2);
+
+}
+
+.action-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.action small{
+
+    color:var(--gold);
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+}
+
+.action span{
+
+    background:#342222;
+
+    padding:8px 12px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+}
+
+.action h3{
+
+    margin-top:16px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:30px;
+
+}
+
+.action p{
+
+    margin-top:12px;
+
+    font-size:13px;
+
+    line-height:1.9;
+
+}
+
+/* =========================================================
+TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:24px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:
+    linear-gradient(
+        to right,
+        #cb8f4b,
+        #f0ca8f
+    );
+
+    color:#1b1414;
+
+    padding:15px 24px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    z-index:120;
+
+    animation:fadeUp .35s ease;
+
+}
+
+/* =========================================================
+ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes growBar{
+
+    to{
+        width:100%;
+    }
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+    .top h1{
+        font-size:60px;
+    }
+
+}
+
+@media(max-width:767px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .feed-grid{
+        grid-template-columns:1fr;
+    }
+
+    .right-column{
+        position:relative;
+        top:auto;
+    }
+
+    .sheet{
+        width:100%;
+    }
+
+    .top h1{
+        font-size:44px;
+    }
+
+}

@@ -12,10 +12,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/noir.css">
+<link id="themeStylesheet" rel="stylesheet" href="css/bengal.css">
 </head>
 <body>
 
+                    <div class="theme-switcher">
+                        <select id="themeSelector">
+                            <option value="atelier">Atelier</option>
+                            <option value="bengal">Bengal</option>
+                            <option value="cinema">Cinema</option>
+                            <option value="estate">Estate</option>
+                            <option value="garden">Garden</option>
+                            <option value="heirloom">Heirloom</option>
+                            <option value="journal">Journal</option>
+                            <option value="maharaja">Maharaja</option>
+                            <option value="noir" selected>Noir</option>
+                            <option value="royal-house">Royal House</option>
+                            <option value="yacht">Yacht</option>
+                            <option value="vintage-orchestra">Vintage Orchestra</option>
+                        </select>
+                    </div>
 <div class="overlay" id="overlay"></div>
 
 <div class="sheet" id="sheet">
@@ -25,6 +41,7 @@
         <div class="sheet-top">
 
             <div>
+                
                 <small style="color:var(--gold);letter-spacing:3px;text-transform:uppercase;">
                     D-11 MISSIONS
                 </small>
@@ -103,6 +120,27 @@
 </div>
 
 <script>
+const themeSelector = document.getElementById('themeSelector');
+const themeStylesheet = document.getElementById('themeStylesheet');
+
+/* LOAD SAVED THEME */
+const savedTheme = localStorage.getItem('vowledger-theme');
+
+if(savedTheme){
+    themeSelector.value = savedTheme;
+    themeStylesheet.href = `css/${savedTheme}.css`;
+}
+
+/* CHANGE THEME */
+themeSelector.addEventListener('change', function(){
+
+    const selectedTheme = this.value;
+
+    themeStylesheet.href = `css/${selectedTheme}.css`;
+
+    localStorage.setItem('vowledger-theme', selectedTheme);
+
+});
 
 /* DATA */
 
