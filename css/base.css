@@ -41,6 +41,7 @@ body::-webkit-scrollbar-thumb{
 
 .top{
     margin-bottom:28px;
+    margin: 0 auto; max-width: 960px;
 }
 
 .top small{
@@ -74,7 +75,8 @@ body::-webkit-scrollbar-thumb{
 /* FEED */
 
 .feed-grid{
-    display:grid;
+    display:grid;max-width:960px;width:100%;
+    margin:0 auto;
     grid-template-columns:1fr 1fr;
     gap:18px;
 }
@@ -233,6 +235,7 @@ body::-webkit-scrollbar-thumb{
 
 .cta{
     width:100%;max-width: 320px;
+    margin: 18px;
     border:none;
     padding:18px;
     border-radius:999px;

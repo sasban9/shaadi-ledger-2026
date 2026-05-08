@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>VowLedger — Horizontal Archive</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+BASE.CSS
+========================================================= */
+
+:root{
+
+    --vh:100vh;
+
+    --container-pad:32px;
+
+    --radius-xl:34px;
+    --radius-lg:26px;
+
+    --transition:
+    all .8s cubic-bezier(.19,1,.22,1);
+
+}
+
+/* =========================================================
+RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    /* width:100%; */
+    height:100%;
+    /* overflow:hidden; */
+
+}
+
+body{
+
+    font-family:var(--font-body);
+
+    background:var(--bg);
+
+    color:var(--text-primary);
+
+}
+
+/* =========================================================
+THEME-BENGAL.CSS
+========================================================= */
+
+body.theme-bengal{
+
+    --bg:#130f0f;
+
+    --bg-soft:#1d1717;
+
+    --card-bg:rgba(255,255,255,.04);
+
+    --text-primary:#f4ead8;
+
+    --text-secondary:#ccbca8;
+
+    --text-muted:#8f7d69;
+
+    --accent:#d8a45f;
+
+    --border-soft:rgba(255,255,255,.08);
+
+    --font-heading:'Cormorant Garamond', serif;
+
+    --font-body:'Inter', sans-serif;
+
+    background:
+    radial-gradient(
+    circle at top left,
+    rgba(212,161,95,.12),
+    transparent 24%
+    ),
+    radial-gradient(
+    circle at bottom right,
+    rgba(145,80,60,.12),
+    transparent 24%
+    ),
+    #120e0e;
+}
+
+/* =========================================================
+GRAIN
+========================================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background-image:
+    url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+
+    opacity:.04;
+
+    pointer-events:none;
+
+    z-index:9999;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.vl-header{
+
+    position:fixed;
+
+    top:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(94%,1280px);
+
+    z-index:1000;
+
+    border-radius:999px;
+
+    background:rgba(12,12,12,.46);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--border-soft);
+
+}
+
+.vl-header-inner{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:16px 28px;
+}
+
+.vl-logo{
+
+    font-family:var(--font-heading);
+
+    font-size:30px;
+}
+
+.vl-logo span{
+    color:var(--accent);
+}
+
+.vl-nav{
+
+    display:flex;
+    gap:30px;
+}
+
+.vl-nav a{
+
+    text-decoration:none;
+
+    color:var(--text-secondary);
+
+    font-size:12px;
+
+    letter-spacing:.18em;
+
+    text-transform:uppercase;
+}
+
+/* =========================================================
+HORIZONTAL SCROLLER
+========================================================= */
+
+.vl-horizontal{
+
+    width:max-content;
+
+    height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    gap:28px;
+
+    padding:
+    120px
+    34px
+    40px
+    34px;
+
+}
+
+/* =========================================================
+INTRO PANEL
+========================================================= */
+
+.vl-intro{
+
+    width:540px;
+    height:78vh;
+
+    flex:none;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    padding:50px;
+
+    border-radius:var(--radius-xl);
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(0,0,0,.72),
+    rgba(0,0,0,.2)
+    ),
+
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid var(--border-soft);
+}
+
+.vl-eyebrow{
+
+    text-transform:uppercase;
+
+    letter-spacing:.24em;
+
+    font-size:12px;
+
+    color:var(--accent);
+
+    margin-bottom:22px;
+}
+
+.vl-intro h1{
+
+    font-family:var(--font-heading);
+
+    font-size:88px;
+
+    line-height:.88;
+
+    font-weight:500;
+
+    margin-bottom:26px;
+}
+
+.vl-intro p{
+
+    max-width:420px;
+
+    color:var(--text-secondary);
+
+    line-height:1.9;
+
+    font-size:16px;
+}
+
+/* =========================================================
+ARCHIVE CARDS
+========================================================= */
+
+.vl-archive-card{
+
+    position:relative;
+
+    flex:none;
+
+    width:480px;
+    height:78vh;
+
+    border-radius:var(--radius-xl);
+
+    overflow:hidden;
+
+    border:1px solid var(--border-soft);
+
+    transition:var(--transition);
+
+    cursor:pointer;
+}
+
+.vl-archive-card:hover{
+
+    transform:
+    translateY(-8px)
+    scale(1.01);
+}
+
+.vl-archive-card img{
+
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+    brightness(.62)
+    contrast(1.04)
+    saturate(.95);
+}
+
+.vl-archive-card::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(0,0,0,.84),
+    rgba(0,0,0,.14)
+    );
+}
+
+.vl-archive-content{
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    z-index:2;
+
+    padding:40px;
+}
+
+.vl-archive-title{
+
+    font-family:var(--font-heading);
+
+    font-size:54px;
+
+    line-height:.95;
+
+    margin-bottom:18px;
+}
+
+.vl-archive-copy{
+
+    max-width:340px;
+
+    color:var(--text-secondary);
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+/* =========================================================
+ARENA TASK CARDS
+========================================================= */
+
+.vl-task-stack{
+
+    width:340px;
+    height:78vh;
+
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+
+    flex:none;
+}
+
+.vl-task{
+
+    flex:1;
+
+    border-radius:var(--radius-lg);
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border-soft);
+
+    padding:26px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:var(--transition);
+}
+
+.vl-task:hover{
+
+    transform:
+    translateY(-4px);
+}
+
+.vl-task::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    top:-100px;
+    right:-100px;
+
+    background:
+    rgba(255,255,255,.03);
+}
+
+.vl-task h3{
+
+    font-family:var(--font-heading);
+
+    font-size:38px;
+
+    line-height:1;
+
+    margin-bottom:16px;
+}
+
+.vl-task p{
+
+    color:var(--text-secondary);
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+.vl-task-meta{
+
+    position:absolute;
+
+    bottom:24px;
+    left:26px;
+
+    font-size:11px;
+
+    letter-spacing:.16em;
+
+    text-transform:uppercase;
+
+    color:var(--accent);
+}
+
+/* =========================================================
+VOICE FRAGMENT
+========================================================= */
+
+.vl-voice{
+
+    width:420px;
+    height:78vh;
+
+    flex:none;
+
+    border-radius:var(--radius-xl);
+
+    background:
+    linear-gradient(
+    to bottom right,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.02)
+    );
+
+    border:1px solid var(--border-soft);
+
+    padding:42px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+}
+
+.vl-voice h2{
+
+    font-family:var(--font-heading);
+
+    font-size:58px;
+
+    line-height:.95;
+
+    margin-bottom:20px;
+}
+
+.vl-voice p{
+
+    color:var(--text-secondary);
+
+    line-height:1.9;
+}
+
+.vl-wave{
+
+    height:90px;
+
+    display:flex;
+    align-items:flex-end;
+
+    gap:8px;
+
+    margin:40px 0;
+}
+
+.vl-wave span{
+
+    width:7px;
+
+    border-radius:999px;
+
+    background:var(--accent);
+
+    animation:wave 1.5s infinite ease-in-out;
+}
+
+.vl-wave span:nth-child(1){height:20px;}
+.vl-wave span:nth-child(2){height:50px;}
+.vl-wave span:nth-child(3){height:28px;}
+.vl-wave span:nth-child(4){height:72px;}
+.vl-wave span:nth-child(5){height:34px;}
+.vl-wave span:nth-child(6){height:56px;}
+.vl-wave span:nth-child(7){height:18px;}
+
+@keyframes wave{
+
+    0%,100%{
+        transform:scaleY(.7);
+        opacity:.6;
+    }
+
+    50%{
+        transform:scaleY(1);
+        opacity:1;
+    }
+}
+
+/* =========================================================
+SCROLL HINT
+========================================================= */
+
+.vl-scroll-note{
+
+    position:fixed;
+
+    bottom:24px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:2000;
+
+    font-size:11px;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+
+    color:var(--text-muted);
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media(max-width:1024px){
+
+    .vl-intro{
+        width:460px;
+    }
+
+    .vl-archive-card{
+        width:420px;
+    }
+
+    .vl-task-stack{
+        width:300px;
+    }
+
+    .vl-voice{
+        width:360px;
+    }
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:767px){
+
+    html,
+    body{
+        overflow:auto;
+    }
+
+    .vl-horizontal{
+
+        width:100%;
+
+        height:auto;
+
+        flex-direction:column;
+
+        padding-top:120px;
+    }
+
+    .vl-intro,
+    .vl-archive-card,
+    .vl-task-stack,
+    .vl-voice{
+
+        width:100%;
+        height:auto;
+    }
+
+    .vl-task-stack{
+        min-height:520px;
+    }
+
+    .vl-nav{
+        display:none;
+    }
+
+    .vl-intro h1{
+        font-size:62px;
+    }
+
+    .vl-archive-title{
+        font-size:44px;
+    }
+
+}
+
+</style>
+</head>
+
+<body class="theme-bengal">
+
+<!-- HEADER -->
+
+<header class="vl-header">
+
+    <div class="vl-header-inner">
+
+        <div class="vl-logo">
+            Vow<span>Ledger</span>
+        </div>
+
+        <nav class="vl-nav">
+
+            <a href="#">Archive</a>
+            <a href="#">Blessings</a>
+            <a href="#">Collections</a>
+            <a href="#">Founding Season</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- HORIZONTAL EXPERIENCE -->
+
+<main class="vl-horizontal" id="horizontalTrack">
+
+    <!-- INTRO -->
+
+    <section class="vl-intro">
+
+        <div class="vl-eyebrow">
+            FOUNDING ARCHIVE
+        </div>
+
+        <h1>
+            Some Stories<br>
+            Should Never<br>
+            Disappear
+        </h1>
+
+        <p>
+            A cinematic archive preserving photographs,
+            blessings, rituals, voice notes,
+            and emotional fragments across generations.
+        </p>
+
+    </section>
+
+    <!-- ARCHIVE -->
+
+    <article class="vl-archive-card">
+
+        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="vl-archive-content">
+
+            <div class="vl-eyebrow">
+                RECOVERED IN 2026
+            </div>
+
+            <div class="vl-archive-title">
+                Before<br>
+                They Met
+            </div>
+
+            <div class="vl-archive-copy">
+                Forgotten photographs from college years,
+                train journeys, handwritten notes,
+                and stories rediscovered before the wedding.
+            </div>
+
+        </div>
+
+    </article>
+
+    <!-- TASKS -->
+
+    <section class="vl-task-stack">
+
+        <article class="vl-task">
+
+            <div class="vl-eyebrow">
+                TONIGHT'S TASK
+            </div>
+
+            <h3>
+                Add A Story About The Couple
+            </h3>
+
+            <p>
+                Share one memory future generations
+                may revisit years from now.
+            </p>
+
+            <div class="vl-task-meta">
+                Arena Collection
+            </div>
+
+        </article>
+
+        <article class="vl-task">
+
+            <div class="vl-eyebrow">
+                FOUNDING SEASON
+            </div>
+
+            <h3>
+                Restore One Old Photograph
+            </h3>
+
+            <p>
+                Upload a forgotten image from family archives,
+                albums, or WhatsApp history.
+            </p>
+
+            <div class="vl-task-meta">
+                Archive Restoration
+            </div>
+
+        </article>
+
+    </section>
+
+    <!-- ARCHIVE -->
+
+    <article class="vl-archive-card">
+
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="vl-archive-content">
+
+            <div class="vl-eyebrow">
+                FAMILY VOICES
+            </div>
+
+            <div class="vl-archive-title">
+                Blessings<br>
+                From Four Cities
+            </div>
+
+            <div class="vl-archive-copy">
+                Audio fragments recorded across Kolkata,
+                Silchar, Delhi, and Bangalore during the founding season.
+            </div>
+
+        </div>
+
+    </article>
+
+    <!-- VOICE -->
+
+    <section class="vl-voice">
+
+        <div class="vl-eyebrow">
+            ELDER RECORDING
+        </div>
+
+        <h2>
+            Grandmother’s Blessing
+        </h2>
+
+        <div class="vl-wave">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <p>
+            “Marriage survives through ordinary evenings,
+            not grand ceremonies.”
+        </p>
+
+    </section>
+
+    <!-- TASKS -->
+
+    <section class="vl-task-stack">
+
+        <article class="vl-task">
+
+            <div class="vl-eyebrow">
+                FAMILY ARCHIVE
+            </div>
+
+            <h3>
+                Record An Elder Voice Note
+            </h3>
+
+            <p>
+                Capture a blessing, recipe,
+                migration story, or ritual memory.
+            </p>
+
+            <div class="vl-task-meta">
+                Sacred Audio
+            </div>
+
+        </article>
+
+        <article class="vl-task">
+
+            <div class="vl-eyebrow">
+                FOUNDING CHAPTER
+            </div>
+
+            <h3>
+                Add A Dining Table Memory
+            </h3>
+
+            <p>
+                Share one story connected to food,
+                family gatherings, or celebrations.
+            </p>
+
+            <div class="vl-task-meta">
+                Family Continuity
+            </div>
+
+        </article>
+
+    </section>
+
+    <!-- ARCHIVE -->
+
+    <article class="vl-archive-card">
+
+        <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="vl-archive-content">
+
+            <div class="vl-eyebrow">
+                CULTURAL CONTINUITY
+            </div>
+
+            <div class="vl-archive-title">
+                Rituals<br>
+                That Survive
+            </div>
+
+            <div class="vl-archive-copy">
+                Songs, recipes, customs,
+                and handwritten traditions
+                preserved for future generations.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<div class="vl-scroll-note">
+    Scroll Horizontally To Continue The Archive
+</div>
+
+<script>
+
+/* =========================================================
+HORIZONTAL SCROLL
+========================================================= */
+
+const track = document.getElementById('horizontalTrack');
+
+window.addEventListener('wheel',(e)=>{
+
+    if(window.innerWidth > 767){
+
+        e.preventDefault();
+
+        track.scrollLeft += e.deltaY;
+
+    }
+
+},{passive:false});
+
+/* =========================================================
+SMOOTH CARD FOCUS
+========================================================= */
+
+const cards = document.querySelectorAll(
+'.vl-archive-card,.vl-task,.vl-voice'
+);
+
+cards.forEach(card=>{
+
+    card.addEventListener('mouseenter',()=>{
+
+        card.style.transition =
+        'all .8s cubic-bezier(.19,1,.22,1)';
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

@@ -147,7 +147,7 @@ LAYOUT
 
     display:grid;
 
-    grid-template-columns:1.45fr .92fr;
+    grid-template-columns:1fr;
 
     gap:28px;
 
@@ -161,11 +161,11 @@ FEED GRID
 
 .feed-grid{
 
-    display:grid;
+    display:grid;max-width: 960px;
 
     grid-template-columns:1fr 1fr;
 
-    gap:24px;
+    gap:24px;margin: 0 auto;
 
 }
 
